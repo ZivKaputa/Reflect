@@ -26,4 +26,4 @@ def random_rgb(delay, total):
         total += -1
 
 
-set_rgb(delay, total)
+random_rgb(delay, total)
