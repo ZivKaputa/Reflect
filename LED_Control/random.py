@@ -1,7 +1,7 @@
 import sys
 import pigpio
 import time
-import numpy
+from random import randint
 
 P_RED = 17
 P_GREEN = 22
@@ -14,9 +14,9 @@ total = sys.argv[2]
 def random_rgb(delay, total):
     while total != 0:
         pi = pigpio.pi()
-        red = numpy.random.randint(0, 255)
-        green = numpy.random.randint(0, 255)
-        blue = numpy.random.randint(0, 255)
+        red = randint(0, 255)
+        green = randint(0, 255)
+        blue = randint(0, 255)
 
         pi.set_PWM_dutycycle(P_RED, red)
         pi.set_PWM_dutycycle(P_GREEN, green)
