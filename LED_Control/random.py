@@ -1,7 +1,7 @@
 import sys
 import pigpio
 import time
-import numpy.random
+import numpy
 
 P_RED = 17
 P_GREEN = 22
