@@ -14,7 +14,7 @@ total = sys.argv[2]
 def random_rgb(delay, total):
     while total != 0:
         pi = pigpio.pi()
-        red = randint(0 255)
+        red = randint(0, 255)
         green = randint(0, 255)
         blue = randint(0, 255)
 
