@@ -6,7 +6,7 @@ from random import randint
 P_RED = 17
 P_GREEN = 22
 P_BLUE = 24
-
+pi = pigpio.pi()
 
 delay = sys.argv[1]
 total = sys.argv[2]
@@ -18,7 +18,7 @@ def cleanup():
 
 def random_rgb(delay, total):
     while total != 0:
-        pi = pigpio.pi()
+
         red = randint(0, 255)
         green = randint(0, 255)
         blue = randint(0, 255)
