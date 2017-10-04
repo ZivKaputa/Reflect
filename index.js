@@ -3,15 +3,19 @@ var PythonShell = require('python-shell');
 var app = express();
 
 app.get('/flash', function (req, res) {
-    PythonShell.run('flash.py', function (err) {
+    var options = {
+      args: ['0', '200', '0']
+    };
+
+    PythonShell.run('LED_Control/set_rgb.py', options, function (err, results) {
         if (err) {
             console.log(err);
         } else {
             console.log('Succesfully Ran Command.');
         }
-
     });
-   res.send('Flashing');
+
+   res.send('Color set.');
 })
 
 var server = app.listen(8080, function () {
