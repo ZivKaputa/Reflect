@@ -4,7 +4,7 @@ var app = express();
 
 app.get('/flash', function (req, res) {
     var options = {
-      args: ['0', '200', '0']
+      args: [req.query.red, req.query.green, req.query.blue]
     };
 
     PythonShell.run('LED_Control/set_rgb.py', options, function (err, results) {
