@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title> Light Strip </title>
+    </head>
+
+    <body>
+
+        <style>
+
+            .sp-container {
+                width: 100% !important;
+            }
+
+            .sp-picker-container {
+                width: 95% !important;
+            }
+
+            .sp-choose {
+                font-size: 50px !important;
+            }
+
+            .sp-cancel {
+                font-size: 50px !important;
+            }
+
+        </style>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src='spectrum.js'></script>
+        <link rel='stylesheet' href='spectrum.css' />
+        <input type='text' class="gone" id="flat" />
+
+
+
+        <script>
+            function bound(c) {
+                return Math.max(Math.min(c, 255), 0);
+            }
+
+            $("#flat").change((e,color) => {
+
+
+                var red, green, blue;
+
+                if (color) {
+                    red = bound(parseInt(color._r));
+                    green = bound(parseInt(color._g));
+                    blue = bound(parseInt(color._b));
+                } else {
+                    red = 0;
+                    blue = 0;
+                    green = 0;
+                }
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", "http://192.168.1.17:8080/flash?red=" + red + "&green=" + green + "&blue=" + blue, true);
+                xhttp.send();
+            });
+            $("#flat").spectrum({
+                flat: true,
+                showInput: true,
+                allowEmpty: true
+            });
+            $("#flatClearable").spectrum({
+                flat: true,
+                showInput: true,
+                allowEmpty:true
+            });
+        </script>
+
+    </body>
+
+
+
+</html>

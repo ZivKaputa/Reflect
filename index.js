@@ -2,6 +2,8 @@ var express = require('express');
 var PythonShell = require('python-shell');
 var app = express();
 
+app.use('/static', express.static('public'));
+
 app.get('/flash', function (req, res) {
     var options = {
       args: [req.query.red, req.query.green, req.query.blue]
