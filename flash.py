@@ -21,7 +21,7 @@ def kill_existing():
 		pid = int(line)
 		try:
 			os.kill(pid,signal.SIGINT)
-        except:
+		except:
             pass
 	f.close()
 	f = open(fname, 'w+')
