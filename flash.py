@@ -18,7 +18,7 @@ def signal_handler(signal, frame):
 
 def write_pid():
 	f = open(fname, 'a')
-	f.write(os.getpid())
+	f.write(str(os.getpid()))
 
 write_pid()
 signal.signal(signal.SIGINT, signal_handler)
