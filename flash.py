@@ -13,6 +13,7 @@ fname = "pids.log"
 def signal_handler(signal, frame):
 	print("Dying...")
 	sys.exit(0)
+	sys.exit(0)
 
 
 def kill_existing():
