@@ -16,7 +16,7 @@ def kill_existing():
 	for line in f:
 		pid = int(line)
         try:
-	        os.kill(pid,signal.SIGINT)
+            os.kill(pid,signal.SIGINT)
         except:
             pass
 	f.close()
