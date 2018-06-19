@@ -23,8 +23,7 @@ def kill_existing():
 		try:
 			os.kill(pid,signal.SIGINT)
 		except:
-			e = sys.exc_info()[0]
-			print(e)
+			traceback.print_exc()
 	f.close()
 	# f = open(fname, 'w+')
 	# f.close()
