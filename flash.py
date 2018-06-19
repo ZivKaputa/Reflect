@@ -16,10 +16,12 @@ def signal_handler(signal, frame):
 
 
 def kill_existing():
-	f = open(fname, 'r')
+	f = open(fname, 'w+')
 	for line in f:
 		pid = int(line)
 		print(pid)
+	f.write('')
+
 
 def write_pid():
 	f = open(fname, 'a')
