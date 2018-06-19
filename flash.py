@@ -20,7 +20,7 @@ def kill_existing():
 	for line in f:
 		pid = int(line)
 		print(pid)
-	f.write('')
+	#f.write('')
 
 
 def write_pid():
