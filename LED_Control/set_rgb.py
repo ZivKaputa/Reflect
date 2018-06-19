@@ -15,11 +15,14 @@ def kill_existing():
 	f = open(fname, 'r')
 	for line in f:
 		pid = int(line)
-		os.kill(pid,signal.SIGINT)
+        try:
+	        os.kill(pid,signal.SIGINT)
+        except:
+            pass
 	f.close()
 	f = open(fname, 'w+')
 	f.close()
-    
+
 def set_rgb(rgb_color):
     pi = pigpio.pi()
     red = int(rgb_color[0])
