@@ -4,7 +4,7 @@ var app = express();
 
 app.use('/static', express.static('public'));
 
-app.get('/flash', function (req, res) {
+app.get('/set_rgb', function (req, res) {
     var options = {
       args: [req.query.red, req.query.green, req.query.blue, req.query.strobe]
     };
