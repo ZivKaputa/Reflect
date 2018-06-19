@@ -19,7 +19,7 @@ def kill_existing():
 	f = open(fname, 'r')
 	for line in f:
 		pid = int(line)
-		print("Killing " + pid + " (I am " + str(os.getpid()) + ")")
+		print("Killing " + str(pid) + " (I am " + str(os.getpid()) + ")")
 		try:
 			os.kill(pid,signal.SIGINT)
 		except e:
