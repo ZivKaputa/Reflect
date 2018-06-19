@@ -13,7 +13,6 @@ fname = "pids.log"
 def signal_handler(signal, frame):
 	print("Dying...")
 	sys.exit(0)
-	sys.exit(0)
 
 
 def kill_existing():
@@ -21,6 +20,7 @@ def kill_existing():
 	for line in f:
 		pid = int(line)
 		try:
+			print("Killing " + pid + " (I am " + os.getpid() + ")")
 			os.kill(pid,signal.SIGINT)
 		except:
 			pass
