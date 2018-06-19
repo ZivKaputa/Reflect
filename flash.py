@@ -8,12 +8,20 @@ P_RED = 17
 P_GREEN = 22
 P_BLUE = 24
 
+fname = "pids.log"
+
 def signal_handler(signal, frame):
 	print("Dying...")
 	sys.exit(0)
 
+write_pid()
 signal.signal(signal.SIGINT, signal_handler)
 os.kill(os.getpid(),signal.SIGINT)
+
+def write_pid():
+	f = open(fname, 'a')
+	f.write(os.getpid())
+
 
 def cleanup():
 	pi.set_PWM_dutycycle(P_RED, 0)
