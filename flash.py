@@ -19,14 +19,14 @@ def kill_existing():
 	f = open(fname, 'r')
 	for line in f:
 		pid = int(line)
+		print("Killing " + pid + " (I am " + str(os.getpid()) + ")")
 		try:
-			print("Killing " + pid + " (I am " + str(os.getpid()) + ")")
 			os.kill(pid,signal.SIGINT)
 		except e:
 			print(e)
 	f.close()
-	f = open(fname, 'w+')
-	f.close()
+	# f = open(fname, 'w+')
+	# f.close()
 
 
 def write_pid():
