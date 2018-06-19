@@ -22,8 +22,8 @@ def kill_existing():
 		print("Killing " + str(pid) + " (I am " + str(os.getpid()) + ")")
 		try:
 			os.kill(pid,signal.SIGINT)
-		except e:
-			print(e)
+		except:
+			pass
 	f.close()
 	# f = open(fname, 'w+')
 	# f.close()
