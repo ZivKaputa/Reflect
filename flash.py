@@ -20,7 +20,7 @@ def kill_existing():
 	for line in f:
 		pid = int(line)
 		try:
-			print("Killing " + pid + " (I am " + os.getpid() + ")")
+			print("Killing " + pid + " (I am " + str(os.getpid()) + ")")
 			os.kill(pid,signal.SIGINT)
 		except:
 			pass
