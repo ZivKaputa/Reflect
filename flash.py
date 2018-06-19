@@ -18,7 +18,7 @@ def signal_handler(signal, frame):
 def kill_existing():
 	f = open(fname, 'r')
 	for line in f:
-		pid = line
+		pid = int(line)
 		try:
 			os.kill(pid,signal.SIGINT)
 		except:
