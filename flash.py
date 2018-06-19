@@ -22,7 +22,7 @@ def kill_existing():
 		try:
 			os.kill(pid,signal.SIGINT)
 		except:
-            pass
+			pass
 	f.close()
 	f = open(fname, 'w+')
 	f.close()
