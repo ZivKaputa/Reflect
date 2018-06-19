@@ -9,7 +9,7 @@ P_BLUE = 24
 
 def signal_handler(signal, frame):
 	print("Dying...")
-    sys.exit(0)
+	sys.exit(0)
 
 signal.signal(signal.SIGINT, signal_handler)
 os.kill(os.getpid(),signal.SIGINT)
