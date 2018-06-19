@@ -27,8 +27,8 @@ def kill_existing():
 		except:
 			pass
 	f.close()
-	# f = open(fname, 'w+')
-	# f.close()
+	f = open(fname, 'w+')
+	f.close()
 
 
 def write_pid():
