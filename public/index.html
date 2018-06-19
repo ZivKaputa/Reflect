@@ -4,47 +4,74 @@
 
     <head>
         <title> Light Strip </title>
-    </head>
-
-    <body>
 
         <style>
-
             .sp-container {
                 width: 100% !important;
             }
-
             .sp-picker-container {
                 width: 95% !important;
             }
-
             .sp-choose {
                 font-size: 50px !important;
             }
-
             .sp-cancel {
                 font-size: 50px !important;
             }
-
+            .slider {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 25px;
+                background: #d3d3d3;
+                outline: none;
+                opacity: 0.7;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+            }
+            .slider:hover {
+                opacity: 1;
+            }
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                background: #4CAF50;
+                cursor: pointer;
+            }
+            .slider::-moz-range-thumb {
+                width: 25px;
+                height: 25px;
+                background: #4CAF50;
+                cursor: pointer;
+            }
         </style>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src='spectrum.js'></script>
         <link rel='stylesheet' href='spectrum.css' />
+
+    </head>
+
+    <body>
+
+        <input type="range" onchange="updateStrobe();" min="0" max="100" value="0" class="slider" id="strobe_range">
         <input type='text' class="gone" id="flat" />
 
-
-
         <script>
+
+            var last_color = {
+                '_r': 0,
+                '_g': 0,
+                '_b': 0
+            }
+            var last_strobe = 0;
             function bound(c) {
                 return Math.max(Math.min(c, 255), 0);
             }
 
             $("#flat").change((e,color) => {
-
-
                 var red, green, blue;
-
                 if (color) {
                     red = bound(parseInt(color._r));
                     green = bound(parseInt(color._g));
@@ -54,9 +81,12 @@
                     blue = 0;
                     green = 0;
                 }
-                var xhttp = new XMLHttpRequest();
-                xhttp.open("GET", "http://192.168.1.17:8080/flash?red=" + red + "&green=" + green + "&blue=" + blue, true);
-                xhttp.send();
+                last_color = {
+                    '_r': red,
+                    '_g': green,
+                    '_b': blue
+                }
+                updateLight(red, green, blue, last_strobe);
             });
             $("#flat").spectrum({
                 flat: true,
@@ -68,10 +98,19 @@
                 showInput: true,
                 allowEmpty:true
             });
+
+            function updateStrobe() {
+                last_strobe = $("#strobe_range").val();
+                updateLight(last_color._r, last_color._g, last_color._b, last_strobe);
+            }
+
+            function updateLight(red, green, blue, strobe) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("GET", "http://192.168.1.17:8080/set_rgb?red=" + red + "&green=" + green + "&blue=" + blue + "&strobe=" + strobe, true);
+                xhttp.send();
+            }
+
         </script>
-
     </body>
-
-
 
 </html>
