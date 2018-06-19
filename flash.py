@@ -19,7 +19,7 @@ def kill_existing():
 	f = open(fname, 'r')
 	for line in f:
 		pid = int(line)
-		print(pid)
+		os.kill(pid,signal.SIGINT)
 	f.close()
 	f = open(fname, 'w+')
 	f.close()
@@ -31,9 +31,9 @@ def write_pid():
 	f.close()
 
 write_pid()
-kill_existing()
 signal.signal(signal.SIGINT, signal_handler)
-os.kill(os.getpid(),signal.SIGINT)
+kill_existing()
+
 
 
 def cleanup():
