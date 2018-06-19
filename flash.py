@@ -20,12 +20,15 @@ def kill_existing():
 	for line in f:
 		pid = int(line)
 		print(pid)
-	#f.write('')
+	f.close()
+	f = open(fname, 'w+')
+	f.close()
 
 
 def write_pid():
 	f = open(fname, 'a')
 	f.write(str(os.getpid()) + '\n')
+	f.close()
 
 write_pid()
 kill_existing()
