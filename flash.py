@@ -41,7 +41,7 @@ def write_pid():
 
 write_pid()
 signal.signal(signal.SIGINT, signal_handler)
-kill_existing()
+#kill_existing()
 
 
 

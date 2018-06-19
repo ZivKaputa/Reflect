@@ -15,12 +15,17 @@ def kill_existing():
 	f = open(fname, 'r')
 	for line in f:
 		pid = int(line)
-        try:
-            os.kill(pid,signal.SIGINT)
-        except:
-            pass
-    f.close()
+		print("Killing " + str(pid) + " (I am " + str(os.getpid()) + ")")
+		try:
+			os.kill(pid,signal.SIGINT)
+		except SystemExit:
+			f = open(fname, 'w+')
+			f.close()
+			sys.exit(0)
+		except:
+			pass
 	f = open(fname, 'w+')
+	f.close()
 	f.close()
 
 def set_rgb(rgb_color):
