@@ -39,9 +39,10 @@ def write_pid():
 	f.write(str(os.getpid()) + '\n')
 	f.close()
 
-write_pid()
+
 signal.signal(signal.SIGINT, signal_handler)
 kill_existing()
+write_pid()
 
 
 
