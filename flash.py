@@ -23,12 +23,15 @@ def kill_existing():
 		try:
 			os.kill(pid,signal.SIGINT)
 		except SystemExit:
+			f = open(fname, 'w+')
+			f.close()
 			sys.exit(0)
 		except:
 			pass
-	f.close()
 	f = open(fname, 'w+')
 	f.close()
+	f.close()
+
 
 
 def write_pid():
