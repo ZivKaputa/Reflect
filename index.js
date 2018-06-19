@@ -6,10 +6,10 @@ app.use('/static', express.static('public'));
 
 app.get('/flash', function (req, res) {
     var options = {
-      args: [req.query.red, req.query.green, req.query.blue]
+      args: [req.query.red, req.query.green, req.query.blue, req.query.strobe]
     };
 
-    PythonShell.run('LED_Control/set_rgb.py', options, function (err, results) {
+    PythonShell.run('LED_Control/flash.py', options, function (err, results) {
         if (err) {
             console.log(err);
         } else {
