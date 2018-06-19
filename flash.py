@@ -1,6 +1,7 @@
 import pigpio
 import time
 import signal
+import os
 import sys
 
 P_RED = 17
