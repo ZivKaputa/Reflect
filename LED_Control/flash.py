@@ -68,7 +68,7 @@ while True:
 	set_rgb(rgb_color)
 	if strobe_delay == 0:
 		sys.exit(0)
-	time.sleep(0.05)
+	time.sleep(0.025)
     	cleanup()
 	time.sleep(strobe_delay)
 
