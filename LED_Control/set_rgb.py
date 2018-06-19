@@ -9,7 +9,7 @@ P_RED = 17
 P_GREEN = 22
 P_BLUE = 24
 
-rgb_color = sys.argv[1:]
+rgb_color = sys.argv[1:3]
 
 def kill_existing():
 	f = open(fname, 'r')
@@ -36,6 +36,7 @@ def set_rgb(rgb_color):
     pi.set_PWM_dutycycle(P_RED, red)
     pi.set_PWM_dutycycle(P_GREEN, green)
     pi.set_PWM_dutycycle(P_BLUE, blue)
+
 
 
 

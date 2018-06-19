@@ -4,6 +4,9 @@ import signal
 import os
 import sys
 
+rgb_color = sys.argv[1:3]
+strobe_delay = int(sys.argv[4]) / 100.0
+
 P_RED = 17
 P_GREEN = 22
 P_BLUE = 24
@@ -53,14 +56,19 @@ def cleanup():
 
 pi = pigpio.pi()
 
-while True:
+def set_rgb(rgb_color):
+    red = int(rgb_color[0])
+    green = int(rgb_color[1])
+    blue = int(rgb_color[2])
+    pi.set_PWM_dutycycle(P_RED, red)
+    pi.set_PWM_dutycycle(P_GREEN, green)
+    pi.set_PWM_dutycycle(P_BLUE, blue)
 
-	pi.set_PWM_dutycycle(P_RED, 255)
-	pi.set_PWM_dutycycle(P_GREEN, 255)
-	pi.set_PWM_dutycycle(P_BLUE, 255)
+while True:
+	set_rgb(rgb_color)
 	time.sleep(0.05)
     	cleanup()
-	time.sleep(0.05)
+	time.sleep(strobe_delay)
 
 cleanup()
 pi.stop()
