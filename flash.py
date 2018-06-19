@@ -4,7 +4,7 @@ import signal
 import os
 import sys
 
-rgb_color = sys.argv[1:3]
+rgb_color = sys.argv[1:4]
 strobe_delay = int(sys.argv[4]) / 100.0
 
 P_RED = 17
