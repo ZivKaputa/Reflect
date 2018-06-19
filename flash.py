@@ -14,13 +14,15 @@ def signal_handler(signal, frame):
 	print("Dying...")
 	sys.exit(0)
 
-write_pid()
-signal.signal(signal.SIGINT, signal_handler)
-os.kill(os.getpid(),signal.SIGINT)
+
 
 def write_pid():
 	f = open(fname, 'a')
 	f.write(os.getpid())
+
+write_pid()
+signal.signal(signal.SIGINT, signal_handler)
+os.kill(os.getpid(),signal.SIGINT)
 
 
 def cleanup():
